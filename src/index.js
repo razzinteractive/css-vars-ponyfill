@@ -32,6 +32,7 @@ const defaults = {
     updateDOM     : true,  // cssVars
     updateURLs    : true,  // cssVars
     watch         : null,  // cssVars
+    useCSSOM      : false, // cssVars
     // Callbacks
     onBeforeSend() {},     // cssVars
     onWarning() {},        // transformCss
@@ -296,6 +297,7 @@ function cssVars(options = {}) {
                 rootElement: defaults.rootElement,
                 include: defaults.include,
                 exclude: settings.exclude,
+                useCSSOM: settings.useCSSOM,
                 onSuccess(cssText, node, url) {
                     cssText = cssText
                         .replace(regex.cssComments, '')
@@ -337,6 +339,7 @@ function cssVars(options = {}) {
                 include     : settings.include,
                 exclude     : settings.exclude,
                 onBeforeSend: settings.onBeforeSend,
+                useCSSOM    : settings.useCSSOM,
                 onError(xhr, node, url) {
                     const responseUrl = xhr.responseURL || getFullUrl(url, location.href);
                     const statusText  = xhr.statusText ? `(${xhr.statusText})` : 'Unspecified Error' + (xhr.status === 0 ? ' (possibly CORS related)' : '');
