@@ -377,10 +377,12 @@ function cssVars(options = {}) {
                     nodeArray.forEach((node, i) => {
                         // Only process CSS contains a custom property
                         // declarations or function
-                        console.log('cssArray[i]:', cssArray[i]);
 
-                        if (regex.cssVars.test(cssArray[i])) {
+                        // if (regex.cssVars.test(cssArray[i])) {
+                        if (regex.cssVarFunc.test(cssArray[i])) {
                             console.log(`cssArray[${i}] passed`);
+                            console.log(cssArray[i]);
+
                             try {
                                 const cssTree = parseCss(cssArray[i], {
                                     preserveStatic: settings.preserveStatic,
