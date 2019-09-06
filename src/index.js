@@ -303,7 +303,12 @@ function cssVars(options = {}) {
                         .replace(regex.cssComments, '')
                         .replace(regex.cssMediaQueries, '');
 
+                    console.log('isShadowElm or isShadowDOMReady getCssData success call');
+                    console.log('isShadowElm cssText before cssVarDeclRules regex:', cssText);
                     cssText = (cssText.match(regex.cssVarDeclRules) || []).join('');
+
+                    console.log('isShadowElm cssText AFTER cssVarDeclRules regex:', cssText);
+
 
                     // Return only matching :root {...} blocks
                     return cssText || false;
@@ -365,7 +370,7 @@ function cssVars(options = {}) {
                     const varStore = settings.updateDOM ? variableStore.dom : Object.keys(variableStore.job).length ? variableStore.job : variableStore.job = JSON.parse(JSON.stringify(variableStore.dom));
 
                     let hasVarChange = false;
-                    
+
                     console.log('cssArray:', cssArray);
 
                     // Parse CSS and variables
@@ -373,7 +378,7 @@ function cssVars(options = {}) {
                         // Only process CSS contains a custom property
                         // declarations or function
                         console.log('cssArray[i]:', cssArray[i]);
-                        
+
                         if (regex.cssVars.test(cssArray[i])) {
                             console.log(`cssArray[${i}] passed`);
                             try {
@@ -388,7 +393,7 @@ function cssVars(options = {}) {
                                     store    : jobVars,
                                     onWarning: handleWarning
                                 });
-                                
+
                                 console.log('cssTree:', cssTree);
 
                                 // Cache data
