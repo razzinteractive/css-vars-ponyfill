@@ -365,12 +365,17 @@ function cssVars(options = {}) {
                     const varStore = settings.updateDOM ? variableStore.dom : Object.keys(variableStore.job).length ? variableStore.job : variableStore.job = JSON.parse(JSON.stringify(variableStore.dom));
 
                     let hasVarChange = false;
+                    
+                    console.log('cssArray:', cssArray);
 
                     // Parse CSS and variables
                     nodeArray.forEach((node, i) => {
                         // Only process CSS contains a custom property
                         // declarations or function
+                        console.log('cssArray[i]:', cssArray[i]);
+                        
                         if (regex.cssVars.test(cssArray[i])) {
+                            console.log(`cssArray[${i}] passed`);
                             try {
                                 const cssTree = parseCss(cssArray[i], {
                                     preserveStatic: settings.preserveStatic,
@@ -383,6 +388,8 @@ function cssVars(options = {}) {
                                     store    : jobVars,
                                     onWarning: handleWarning
                                 });
+                                
+                                console.log('cssTree:', cssTree);
 
                                 // Cache data
                                 node.__cssVars = { tree: cssTree };
