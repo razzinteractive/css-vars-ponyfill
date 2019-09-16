@@ -303,12 +303,7 @@ function cssVars(options = {}) {
                         .replace(regex.cssComments, '')
                         .replace(regex.cssMediaQueries, '');
 
-                    console.log('isShadowElm or isShadowDOMReady getCssData success call');
-                    console.log('isShadowElm cssText before cssVarDeclRules regex:', cssText);
                     cssText = (cssText.match(regex.cssVarDeclRules) || []).join('');
-
-                    console.log('isShadowElm cssText AFTER cssVarDeclRules regex:', cssText);
-
 
                     // Return only matching :root {...} blocks
                     return cssText || false;
@@ -371,8 +366,6 @@ function cssVars(options = {}) {
 
                     let hasVarChange = false;
 
-                    console.log('cssArray:', cssArray);
-
                     // Parse CSS and variables
                     nodeArray.forEach((node, i) => {
                         // Only process CSS contains a custom property
@@ -380,8 +373,6 @@ function cssVars(options = {}) {
 
                         // if (regex.cssVars.test(cssArray[i])) {
                         if (regex.cssVarFunc.test(cssArray[i])) {
-                            console.log(`cssArray[${i}] passed`);
-                            console.log(cssArray[i]);
 
                             try {
                                 const cssTree = parseCss(cssArray[i], {
@@ -395,8 +386,6 @@ function cssVars(options = {}) {
                                     store    : jobVars,
                                     onWarning: handleWarning
                                 });
-
-                                console.log('cssTree:', cssTree);
 
                                 // Cache data
                                 node.__cssVars = { tree: cssTree };
