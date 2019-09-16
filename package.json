@@ -85,7 +85,7 @@
     "eslint": "^6.1.0",
     "eslint-plugin-chai-expect": "^2.0.1",
     "eslint-plugin-mocha": "^6.0.0",
-    "get-css-data": "github:razzinteractive/get-css-data",
+    "get-css-data": "^1.6.3",
     "jsdom": "^15.1.1",
     "karma": "^4.1.0",
     "karma-chai": "^0.1.0",
