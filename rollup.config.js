@@ -37,7 +37,7 @@ const pluginSettings = {
     eslint: {
         exclude       : ['node_modules/**', './package.json'],
         throwOnWarning: false,
-        throwOnError  : true
+        throwOnError  : false
     },
     babel: {
         exclude: ['node_modules/**'],
